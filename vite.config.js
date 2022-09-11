@@ -1,5 +1,10 @@
 import { defineConfig } from 'vite'
 
+// 文件入口，input file
+const entryFileNames = {
+  index: '/src/ts/index.ts',
+}
+
 export default defineConfig(({ command, mode }) => {
   var isProd = mode === 'production';
   const isWatch = !isProd;
@@ -14,9 +19,7 @@ export default defineConfig(({ command, mode }) => {
       chunkSizeWarningLimit: 20, // 20 KB
       watch: isWatch,
       rollupOptions: {
-        input: {
-          index: '/src/ts/index.ts',
-        },
+        input: entryFileNames,
         // 用于排除不需要打包的依赖
         // external: ["react", "react-dom"],
         output: {
